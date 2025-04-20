@@ -6,7 +6,7 @@ import {
     Navigate,
 } from "react-router-dom";
 import { Toaster } from "react-hot-toast";
-import { AuthProvider } from "./contexts/AuthContext";
+import { AuthProvider, useAuth } from "./contexts/AuthContext"; // Make sure to import useAuth
 import Login from "./pages/Login";
 import Signup from "./pages/Signup";
 import Dashboard from "./pages/Dashboard";
@@ -22,43 +22,45 @@ function App() {
             <Router>
                 <Toaster position="top-right" />
                 <Routes>
-                    <Route path="/welcome" element={<Welcome />} />
                     <Route path="/login" element={<Login />} />
                     <Route path="/signup" element={<Signup />} />
+                    <Route path="/" element={<RootRedirect />} />
                     <Route path="/" element={<Layout />}>
-                    <Route
-                        index
-                        element={<Navigate to="/dashboard" replace />}
-                    />
-                    <Route
-                        path="dashboard"
-                        element={
-                            <ProtectedRoute>
-                                <Dashboard />
-                            </ProtectedRoute>
-                        }
-                    />
-                    <Route
-                        path="expenses"
-                        element={
-                            <ProtectedRoute>
-                                <Expenses />
-                            </ProtectedRoute>
-                        }
-                    />
-                    <Route
-                        path="expenses/new"
-                        element={
-                            <ProtectedRoute>
-                                <NewExpense />
-                            </ProtectedRoute>
-                        }
-                    />
+                        <Route
+                            path="dashboard"
+                            element={
+                                <ProtectedRoute>
+                                    <Dashboard />
+                                </ProtectedRoute>
+                            }
+                        />
+                        <Route
+                            path="expenses"
+                            element={
+                                <ProtectedRoute>
+                                    <Expenses />
+                                </ProtectedRoute>
+                            }
+                        />
+                        <Route
+                            path="expenses/new"
+                            element={
+                                <ProtectedRoute>
+                                    <NewExpense />
+                                </ProtectedRoute>
+                            }
+                        />
                     </Route>
                 </Routes>
             </Router>
         </AuthProvider>
     );
+}
+
+// New component to handle root route redirection
+function RootRedirect() {
+    const { currentUser } = useAuth();
+    return currentUser ? <Navigate to="/dashboard" replace /> : <Welcome />;
 }
 
 export default App;

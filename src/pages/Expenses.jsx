@@ -19,10 +19,14 @@ import {
   CardHeader,
   CardTitle,
 } from "../components/ui/card";
+import { Plus } from 'lucide-react';
+import { useNavigate } from 'react-router-dom';
+
 
 const ExpensesPage = () => {
   const { expenses, loading, error } = useExpenses();
   const [searchTerm, setSearchTerm] = useState('');
+  const navigate = useNavigate();
 
   const filteredExpenses = expenses.filter(expense =>
     expense.description?.toLowerCase().includes(searchTerm.toLowerCase()) ||
@@ -73,48 +77,52 @@ const ExpensesPage = () => {
     <motion.div
       initial={{ opacity: 0, y: 20 }}
       animate={{ opacity: 1, y: 0 }}
-      className="container mx-auto py-8 px-4"
+      className="container mx-auto py-4 sm:py-8 px-2 sm:px-4 bg-gray-700 mt-3 rounded-lg"
     >
-      <Card className="mb-8">
+      <Card className="mb-4 sm:mb-8">
         <CardHeader>
-          <CardTitle className="text-3xl font-bold">Your Expenses</CardTitle>
+          <CardTitle className="text-2xl sm:text-3xl font-bold">Your Expenses</CardTitle>
           <CardDescription>
             Track and manage all your expenses in one place
           </CardDescription>
         </CardHeader>
         <CardContent>
-          <div className="flex justify-between items-center mb-6">
+          <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 mb-6">
             <Input
               type="search"
               placeholder="Search expenses..."
-              className="max-w-sm"
+              className="w-full sm:max-w-sm"
               value={searchTerm}
               onChange={(e) => setSearchTerm(e.target.value)}
             />
-            <Button>Add New Expense</Button>
+            <Button
+            onClick={() => navigate("/expenses/new")}
+            className="w-full sm:w-auto py-2 rounded-lg flex items-center justify-center gap-2">
+              <Plus /> Add New Expense
+            </Button>
           </div>
 
-          <div className="rounded-lg border bg-card">
+          <div className="rounded-lg border bg-card overflow-x-auto">
             <Table>
               <TableHeader>
                 <TableRow>
-                  <TableHead>Date</TableHead>
-                  <TableHead>Description</TableHead>
-                  <TableHead>Category</TableHead>
-                  <TableHead className="text-right">Amount</TableHead>
+                  <TableHead className="whitespace-nowrap">Date</TableHead>
+                  <TableHead className="whitespace-nowrap">Description</TableHead>
+                  <TableHead className="whitespace-nowrap">Category</TableHead>
+                  <TableHead className="text-right whitespace-nowrap">Amount</TableHead>
                 </TableRow>
               </TableHeader>
               <TableBody>
                 {filteredExpenses.map((expense) => (
                   <TableRow key={expense.id}>
-                    <TableCell>{formatDate(expense.createdAt)}</TableCell>
-                    <TableCell className="font-medium">{expense.description}</TableCell>
+                    <TableCell className="whitespace-nowrap">{formatDate(expense.createdAt)}</TableCell>
+                    <TableCell className="font-medium max-w-[200px] truncate">{expense.description}</TableCell>
                     <TableCell>
-                      <span className={`px-3 py-1 rounded-full text-sm font-medium ${getCategoryColor(expense.category)}`}>
+                      <span className={`px-2 sm:px-3 py-1 rounded-full text-xs sm:text-sm font-medium ${getCategoryColor(expense.category)}`}>
                         {expense.category}
                       </span>
                     </TableCell>
-                    <TableCell className="text-right">
+                    <TableCell className="text-right whitespace-nowrap">
                       ${expense.amount.toFixed(2)}
                     </TableCell>
                   </TableRow>

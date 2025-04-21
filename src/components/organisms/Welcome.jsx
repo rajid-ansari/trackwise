@@ -9,6 +9,7 @@ import {
   ShieldCheckIcon
 } from '@heroicons/react/24/outline'
 import ExpenseChart from '../atoms/ExpenseChart'
+import Logo from '../atoms/Logo'
 
 const Welcome = () => {
   // Sample data for the demo chart
@@ -77,7 +78,8 @@ const Welcome = () => {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between h-16">
             <div className="flex items-center">
-              <span className="text-2xl font-bold text-indigo-600">TrackWise</span>
+              <Logo />
+              {/* <span className="text-2xl font-bold text-indigo-600">TrackWise</span> */}
             </div>
             <div className="flex items-center space-x-4">
               <Link

@@ -15,10 +15,25 @@ import NewExpense from "./pages/NewExpense";
 import Welcome from "./components/organisms/Welcome";
 import Layout from "./components/Layout";
 import ProtectedRoute from "./components/atoms/ProtectedRoute";
+import { Helmet } from "react-helmet"; //seo optimization
 
 function App() {
     return (
         <AuthProvider>
+            {/* seo start */}
+            <Helmet>
+                <title>TrackWise - Smart & Simple Expense Tracker</title>
+                <meta
+                    name="description"
+                    content="TrackWise helps you manage your daily expenses and budget efficiently."
+                />
+                <meta
+                    name="keywords"
+                    content="expense tracker, budget app, money management, TrackWise app, daily expenses, budget planner"
+                />
+                <meta name="author" content="Rajid" />
+            </Helmet>
+            {/* seo end */}
             <Router>
                 <Toaster position="top-right" />
                 <Routes>
@@ -59,8 +74,8 @@ function App() {
 
 // New component to handle root route redirection
 function RootRedirect() {
-    const { currentUser } = useAuth();
-    return currentUser ? <Navigate to="/dashboard" replace /> : <Welcome />;
+    const { user } = useAuth();
+    return user ? <Navigate to="/dashboard" replace /> : <Welcome />;
 }
 
 export default App;

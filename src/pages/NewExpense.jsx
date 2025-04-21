@@ -21,7 +21,7 @@ const NewExpense = () => {
     <motion.div
       initial={{ opacity: 0, y: 20 }}
       animate={{ opacity: 1, y: 0 }}
-      className="container max-w-2xl mx-auto py-8 px-4"
+      className="container max-w-2xl mx-auto py-8 px-4 bg-gray-700 mt-7 rounded-lg"
     >
       <div className="mb-8">
         <h1 className="text-4xl font-bold tracking-tight">Add New Expense</h1>

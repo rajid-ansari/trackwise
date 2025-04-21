@@ -4,13 +4,13 @@ import { getFirestore } from 'firebase/firestore'
 
 // Your web app's Firebase configuration
 const firebaseConfig = {
-  apiKey: "AIzaSyC4PUSpNhbd4GUWOnwEw8Yd3WixX4cY3lY",
-  authDomain: "trackwise-169bf.firebaseapp.com",
-  projectId: "trackwise-169bf",
-  storageBucket: "trackwise-169bf.firebasestorage.app",
-  messagingSenderId: "515702881596",
-  appId: "1:515702881596:web:dbc374d6533eb077a5b239",
-  measurementId: "G-BY0DL32XMD"
+  apiKey: Import.meta.env.VITE_FIREBASE_API_KEY,
+  authDomain: Import.meta.env.VITE_FIREBASE_AUTH_DOMAIN,
+  projectId: Import.meta.env.VITE_FIREBASE_PROJECT_ID,
+  storageBucket: Import.meta.env.VITE_FIREBASE_STORAGE_BUCKET,
+  messagingSenderId: Import.meta.env.VITE_FIREBASE_MESSAGING_SENDER_ID,
+  appId: Import.meta.env.VITE_FIREBASE_APP_ID,
+  measurementId: Import.meta.env.VITE_FIREBASE_MEASUREMENT_ID,
 }
 
 // Initialize Firebase with custom settings

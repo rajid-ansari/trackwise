@@ -1,6 +1,6 @@
-# ExpenseWise
+# TrackWise
 
-A modern expense tracking application built with React and Tailwind CSS.
+A modern expense tracking application built with React and Tailwind CSS for the frontend and Firebase as a backend service.
 
 ## Project Structure
 

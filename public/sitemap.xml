@@ -2,25 +2,25 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 
   <url>
-    <loc>https://trackwise.vercel.app/</loc>
+    <loc>https://trackwisee.vercel.app/</loc>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
   </url>
 
   <url>
-    <loc>https://trackwise.vercel.app/login</loc>
+    <loc>https://trackwisee.vercel.app/login</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
 
   <url>
-    <loc>https://trackwise.vercel.app/signup</loc>
+    <loc>https://trackwisee.vercel.app/signup</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
 
   <url>
-    <loc>https://trackwise.vercel.app/dashboard</loc>
+    <loc>https://trackwisee.vercel.app/dashboard</loc>
     <changefreq>daily</changefreq>
     <priority>0.9</priority>
   </url>
